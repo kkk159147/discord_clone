@@ -18,21 +18,87 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Discord but built out of Flutter">
 
   <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="discord_clone">
+  <meta name="apple-mobile-web-app-title" content="Discord Flutter">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>discord_clone</title>
+  <title>Discord Flutter</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Styles -->
+  <style type="text/css">
+    body {
+      background-color: rgb(47, 49, 54);
+      font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 350px;
+      text-align: center;
+    }
+    .discord-logo {
+      width: 80px;
+      margin-bottom: 24px;
+    }
+    .text-title {
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+    }
+    .text-subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgb(163, 166, 170);
+    }
+  </style>
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <div class="content">
+    <img class="discord-logo" src="https://i.ibb.co/4sg5gnR/Discord-Logo-White.png" />
+    <p class="text-title">
+      DID YOU KNOW
+    </p>
+    <p class="text-subtitle">
+      Discord was almost called Wyvern before we
+      picked our name. Not too proud of that one.
+    </p>
+  </div>
+  <script>
+    window.addEventListener('load', function(ev) {
+      const content = document.querySelector(".content");
+
+      console.log("⏳ Loading entrypoint...");
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        }
+      }).then(function(engineInitializer) {
+        console.log("✍ Initializing engine...");
+        return engineInitializer.initializeEngine();
+      }).then(function(appRunner) {
+        console.log("🚀 Running app...");
+        content.remove();
+        return appRunner.runApp();
+      });
+    });
+  </script>
 </body>
 </html>
